@@ -2,6 +2,7 @@ import './style.css';
 import { parsePrompt } from './parsePrompt';
 import { World } from './world/World';
 
+const app = document.querySelector<HTMLDivElement>('#app')!;
 const landing = document.querySelector<HTMLDivElement>('#landing')!;
 const hud = document.querySelector<HTMLDivElement>('#hud')!;
 const promptEl = document.querySelector<HTMLTextAreaElement>('#prompt')!;
@@ -17,6 +18,7 @@ const world = new World(canvas);
 function showLanding(): void {
   landing.classList.remove('hidden');
   hud.classList.add('hidden');
+  app.classList.remove('playing');
   // Rebuild empty clear by re-hiding — keep last frame; dispose controls via rebuild on next gen
   document.exitPointerLock();
 }
@@ -33,6 +35,7 @@ function enterWorld(prompt: string): void {
 
   landing.classList.add('hidden');
   hud.classList.remove('hidden');
+  app.classList.add('playing');
   labelEl.textContent = spec.label;
 
   if (spec.cameraMode === 'orbit') {
@@ -46,7 +49,7 @@ presets.forEach((chip) => {
   chip.addEventListener('click', () => {
     const p = chip.dataset.prompt ?? chip.textContent ?? '';
     promptEl.value = p;
-    promptEl.focus();
+    enterWorld(p);
   });
 });
 
