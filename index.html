@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astra Worlds</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Landing -->
+      <div id="landing" class="landing">
+        <div class="landing-card">
+          <h1 class="title">Astra Worlds</h1>
+          <p class="subtitle">Describe a place. Step inside.</p>
+          <textarea
+            id="prompt"
+            class="prompt"
+            rows="4"
+            placeholder="A foggy forest with soft light and animals wandering between the trees…"
+          ></textarea>
+          <div class="presets" id="presets">
+            <button type="button" class="chip" data-prompt="Foggy forest with animals">Foggy forest with animals</button>
+            <button type="button" class="chip" data-prompt="Floating island over clouds">Floating island over clouds</button>
+            <button type="button" class="chip" data-prompt="Boat on a calm ocean">Boat on a calm ocean</button>
+          </div>
+          <button type="button" id="generate" class="generate">Generate</button>
+        </div>
+      </div>
+
+      <!-- World overlay -->
+      <div id="hud" class="hud hidden">
+        <button type="button" id="back" class="back">← New world</button>
+        <div id="hint" class="hint"></div>
+        <div id="scene-label" class="scene-label"></div>
+      </div>
+      <canvas id="c"></canvas>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
